@@ -1,0 +1,104 @@
+*{margin: 0px;padding: 0px;}
+#con
+{
+    margin: 30px auto;
+    width: 1000px;
+    height: 500px;
+    background: rgb(55, 130, 185);
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+#top
+{
+    width: 1000px;
+    height:100px;
+    /* background: rgb(56, 55, 55); */
+}
+#body
+{
+    width: 1000px;
+    height: 370px;
+    /* background: black; */
+    border-radius: 10px;
+}
+#body>#left
+{
+    width: 600px;
+    height: 370px;
+    /* background: red; */
+    float: left;
+    box-sizing: border-box;font-size: 0px;
+}
+#body>#left>table
+{
+    width: 600px;
+    height: 370px;
+}
+#bet
+{
+    height: 150px;
+    text-align: center;
+}
+#value
+{
+    text-align: center;
+}
+#bet>td>img
+{
+    width: 120px;
+    height: 110px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px rgb(134, 131, 131);
+    cursor: pointer;
+}
+input[type=text]
+{
+    width: 120px;
+    height: 20px;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 2px 0px;
+    box-shadow: 0px 0px 5px white;
+    font-size: 15px;
+}
+#body>#right
+{
+    width: 400px;
+    height: 370px;
+    /* background: rgb(90, 66, 66); */
+    float: right;
+}
+#body>#right>table
+{
+    width: 400px;
+    height: 370px;
+}
+#action>td
+{
+    padding: 40px;
+    box-sizing: border-box;
+}
+#action>td>div
+{
+    font-size: 30px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background: white;
+    text-align: center;
+    font-family: "Khmer OS battambang";
+}
+#result
+{
+    height: 150px;
+    text-align: center;
+}
+
+#result>td>img
+{
+    width: 120px;
+    height: 110px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px rgb(134, 131, 131);
+    border: 1px solid black;
+}

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ខ្លាឃ្លោក</title>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+        <audio id="shake">
+                <source src="sound/Shake.mp3" type="audio/ogg">
+        </audio>
+        <audio id="draw">
+                <source src="sound/draw.mp3" type="audio/ogg">
+        </audio>
+        <audio id="lost">
+                <source src="sound/lost.mp3" type="audio/ogg">
+        </audio>
+        <audio id="shout">
+                <source src="sound/win.mp3" type="audio/ogg">
+        </audio>
+        <audio id="sound">
+                <source src="sound/Sad Violin - MLG Sound Effects (HD).mp3" type="audio/ogg">
+        </audio>
+        <audio id="coint">
+            <source src="sound/coint.mp3" type="audio/ogg">
+    </audio>
+    <div id="con">
+        <div id="top">
+            <img src="Image/money-PNG-e1532606569895.png" alt="" style="height:100px;vertical-align: middle">
+            <span id="yourMoney" style="color: white;vertical-align: middle;font-size: 35px;margin-left: 50px;font-family: 'Khmer OS battambang'">1000 រៀល</span>
+            <span id="betmoney" style="color: white;vertical-align: middle;font-size: 35px;margin-left: 50px;font-family: 'Khmer OS battambang'"></span>
+        </div>
+
+        <div id="body">
+            <div id="left">
+                <table border="0">
+                    <tr id="bet">
+                        <td><img src="Image/khla.jpg" onclick="bet('lbkhla');"></td>
+                        <td><img src="Image/khloak.jpg" onclick="bet('lbkhloak');"></td>
+                        <td><img src="Image/Man.jpg" onclick="bet('lbman');"></td>
+                    </tr>
+                    <tr id="value">
+                        <td><input id="lbkhla" type="text" value="0"></td>
+                        <td><input id="lbkhloak" type="text" value="0"></td>
+                        <td><input id="lbman" type="text" value="0"></td>
+                    </tr>
+                    <tr id="bet">
+                        <td><img src="Image/BongKong.jpg" onclick="bet('lbbongkong');"></td>
+                        <td><img src="Image/Kdam.jpg" onclick="bet('lbkdam');"></td>
+                        <td><img src="Image/trey.jpg" onclick="bet('lbtrey');"></td>
+                    </tr>
+                    <tr id="value">
+                        <td><input id="lbbongkong" type="text" value="0"></td>
+                        <td><input id="lbkdam" type="text" value="0"></td>
+                        <td><input id="lbtrey" type="text" value="0"></td>
+                    </tr>
+                </table>
+            </div>
+
+
+
+
+
+            <div id="right">
+                <table border="0">
+                    <tr id="result">
+                            <td><img src="Image/transparent.png" id="one" ></td>
+                            <td><img src="Image/transparent.png" id="two" ></td>
+                            <td><img src="Image/transparent.png" id="three" ></td>
+                    </tr>
+                    <tr id="action">
+                        <td colspan="3"><div id="click" onclick="eventclick()">ក្រឡុក</div></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script> 
+
+
+    var money=0;
+    var oldmoney,newmoney;
+    function bet(lbmoney)
+    {
+    var yourMoney=document.getElementById("yourMoney").innerHTML.replace("រៀល","");
+    if(yourMoney>0)
+    {
+
+    document.getElementById("coint").play();
+    money+=100;
+    document.getElementById(lbmoney).value=(document.getElementById(lbmoney).value*1)+100;
+    yourMoney-=100;
+    document.getElementById('betmoney').innerHTML="ចាក់​ "+money+" រៀល";
+    document.getElementById("yourMoney").innerHTML=yourMoney+" រៀល";
+    }
+    else 
+    {
+        alert("លោកអ្នកអស់ទឹកប្រាក់សំរាប់លេងហើយ សូមបញ្ចូលទឹកប្រាក់!");
+    }
+}
+
+function eventclick()
+{
+    var winmoney=0;
+    var action=document.getElementById('click').innerHTML;
+    if(action=="ក្រឡុក")
+    {
+        document.getElementById("shake").play();
+
+    oldmoney=document.getElementById('yourMoney').innerHTML.replace("រៀល","");
+
+
+    document.getElementById('one').src="Image/nosee.png";
+    document.getElementById('two').src="Image/nosee.png";
+    document.getElementById('three').src="Image/nosee.png";
+    document.getElementById('click').innerHTML="បើកមើល";
+    }
+    
+    else if(action=="បើកមើល")
+    {
+        money=0;
+        document.getElementById('betmoney').innerHTML="";
+        document.getElementById('one').src="Image/transparent.png";
+        document.getElementById('two').src="Image/transparent.png";
+        document.getElementById('three').src="Image/transparent.png";
+        document.getElementById('click').innerHTML="សារឡើងវិញ";
+        var imgpath=["Image/khla.jpg","Image/khloak.jpg","Image/Man.jpg","Image/BongKong.jpg","Image/Kdam.jpg","Image/trey.jpg"];
+        var img=["one","two","three"];
+        var lbmoney=[
+            document.getElementById('lbkhla').value,
+            document.getElementById('lbkhloak').value,
+            document.getElementById('lbman').value,
+            document.getElementById('lbbongkong').value,
+            document.getElementById('lbkdam').value,
+            document.getElementById('lbtrey').value
+        ];
+        var index1,index2;
+        for(var i=0;i<3;i++)
+        {
+            var index=Math.floor(Math.random()*6);
+            document.getElementById(img[i]).src=imgpath[index];
+            if(i==0)
+            {
+                winmoney=(lbmoney[index]*1)+(lbmoney[index]*1);
+                index1=index;
+            }
+            else if(i==1)
+            {
+                if(index==index1)
+                {
+                    winmoney+=(lbmoney[index]*1);
+                }
+                else
+                {
+                    winmoney+=(lbmoney[index]*1)+(lbmoney[index]*1);
+                    index2=index;
+                }
+
+            }
+            else if(i==2)
+            {
+                if(index==index1||index==index2)
+                {
+                    winmoney+=(lbmoney[index]*1);
+                }
+                else
+                {
+                    winmoney+=(lbmoney[index]*1)+(lbmoney[index]*1);
+                }     
+            }
+        }
+        document.getElementById('yourMoney').innerHTML= (document.getElementById('yourMoney').innerHTML).replace("រៀល","")*1+winmoney+" រៀល";
+        newmoney=document.getElementById('yourMoney').innerHTML.replace("រៀល","");
+
+        if((newmoney*1)>(oldmoney*1))
+        {
+            document.getElementById('betmoney').innerHTML="ឈ្នះ"+(newmoney-oldmoney)+"រៀល";
+            document.getElementById("shout").play();
+        }
+        else if((newmoney*1)==(oldmoney*1))
+        {
+            document.getElementById('betmoney').innerHTML="រួចខ្លួន";
+            document.getElementById("draw").play();
+        }
+        else 
+        {
+            if(newmoney>0)
+            {
+            document.getElementById("lost").play();
+            document.getElementById('betmoney').innerHTML="ចាញ់ "+(oldmoney-newmoney)+" រៀល";
+            }
+            else if(newmoney==0)
+            {
+                document.getElementById('sound').play();
+                document.getElementById('betmoney').innerHTML="រលាយ";
+            }
+        }
+    }
+    else
+    {
+        document.getElementById('lbkhla').value="0";
+        document.getElementById('lbkhloak').value="0";
+        document.getElementById('lbman').value="0";
+        document.getElementById('lbbongkong').value="0";
+        document.getElementById('lbkdam').value="0";
+        document.getElementById('lbtrey').value="0";
+        document.getElementById('one').src="Image/transparent.png";
+        document.getElementById('two').src="Image/transparent.png";
+        document.getElementById('three').src="Image/transparent.png";
+
+        document.getElementById('click').innerHTML="ក្រឡុក";
+        document.getElementById('betmoney').innerHTML="";
+    }
+}
+    </script>
+</body>
+</html>
